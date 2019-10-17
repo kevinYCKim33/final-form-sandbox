@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Field, FormSpy } from "react-final-form";
+import createDecorator from "final-form-focus"; // yarn add final-form-focus
 import "./App.css";
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -8,17 +9,22 @@ const showResults = async values => {
   window.alert(JSON.stringify(values, undefined, 2));
 };
 
+const focusOnError = createDecorator();
 const required = value => (value ? undefined : "Required");
 
 // the subscription thing is NOT THAT important for smaller forms
 // 200 fields...then yeah maybe...
 // by default, it subscribes to all the changes...
 
+// focusOnError...very useful plugin on the other hand
+// for login...probably extra...for registration?? very handy!!
+
 const App = () => (
   <div>
     <h1>React Final Form</h1>
     <Form
       onSubmit={showResults}
+      decorators={[focusOnError]}
       subscription={{ values: true, submitting: true }}
     >
       {({ handleSubmit, values, submitting }) => (
