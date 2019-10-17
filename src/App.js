@@ -19,6 +19,9 @@ const required = value => (value ? undefined : "Required");
 // focusOnError...very useful plugin on the other hand
 // for login...probably extra...for registration?? very handy!!
 
+// other plugin: use html5 validation really good for accessibility
+// if form has to work with js disabled...html5 validity works
+
 const App = () => (
   <div>
     <h1>React Final Form</h1>
